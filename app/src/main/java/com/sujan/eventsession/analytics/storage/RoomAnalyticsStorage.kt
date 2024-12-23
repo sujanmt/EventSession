@@ -2,8 +2,8 @@ package com.sujan.eventsession.analytics.storage
 
 import android.content.Context
 import com.google.gson.Gson
-import com.sujan.eventsession.analytics.AnalyticsStorage
-import com.sujan.eventsession.analytics.models.AnalyticsSession
+import com.sujan.eventanalytics.AnalyticsStorage
+import com.sujan.eventanalytics.models.AnalyticsSession
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first

@@ -1,6 +1,7 @@
-package com.sujan.eventsession.analytics
+package com.sujan.eventanalytics
 
-import com.sujan.eventsession.analytics.models.AnalyticsSession
+import com.sujan.eventanalytics.models.AnalyticsSession
+
 
 interface AnalyticsStorage {
     fun saveSession(session: AnalyticsSession)

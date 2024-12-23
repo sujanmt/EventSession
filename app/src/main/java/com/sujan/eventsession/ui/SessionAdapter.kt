@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sujan.eventsession.R
-import com.sujan.eventsession.analytics.models.AnalyticsSession
+import com.sujan.eventanalytics.models.AnalyticsSession
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

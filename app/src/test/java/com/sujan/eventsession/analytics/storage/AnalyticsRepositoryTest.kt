@@ -2,9 +2,11 @@ package com.sujan.eventsession.analytics.storage
 
 import app.cash.turbine.test
 import com.google.gson.Gson
-import com.sujan.eventsession.analytics.models.AnalyticsEvent
-import com.sujan.eventsession.analytics.models.AnalyticsSession
+import com.sujan.eventanalytics.models.AnalyticsSession
 import com.sujan.eventsession.analytics.storage.dao.AnalyticsDao
+import com.sujan.eventsession.analytics.storage.entities.EventEntity
+import com.sujan.eventsession.analytics.storage.entities.SessionEntity
+import com.sujan.eventsession.analytics.storage.entities.SessionWithEvents
 import io.mockk.*
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
@@ -32,7 +34,7 @@ class AnalyticsRepositoryTest {
             name = "test_session",
             startTime = 1000L,
             events = mutableListOf(
-                AnalyticsEvent(
+                com.sujan.eventanalytics.models.AnalyticsEvent(
                     name = "test_event",
                     properties = mapOf("key" to "value"),
                     timestamp = 2000L

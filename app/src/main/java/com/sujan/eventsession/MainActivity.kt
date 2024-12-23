@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
-import com.sujan.eventsession.analytics.AnalyticsSDK
+import com.sujan.eventanalytics.AnalyticsSDK
 import com.sujan.eventsession.analytics.storage.RoomAnalyticsStorage
 import com.sujan.eventsession.ui.SessionAdapter
 import kotlinx.coroutines.launch

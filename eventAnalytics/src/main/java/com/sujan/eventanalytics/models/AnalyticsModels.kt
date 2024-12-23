@@ -1,4 +1,4 @@
-package com.sujan.eventsession.analytics.models
+package com.sujan.eventanalytics.models
 
 import java.util.UUID
 

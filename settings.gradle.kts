@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "EventSession"
 include(":app")
- 
+include(":eventAnalytics")

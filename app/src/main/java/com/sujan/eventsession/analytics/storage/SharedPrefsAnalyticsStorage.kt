@@ -4,14 +4,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.sujan.eventsession.analytics.AnalyticsStorage
-import com.sujan.eventsession.analytics.models.AnalyticsSession
+import com.sujan.eventanalytics.AnalyticsStorage
+import com.sujan.eventanalytics.models.AnalyticsSession
 
-class SharedPrefsAnalyticsStorage(context: Context) : AnalyticsStorage {
+class SharedPrefsAnalyticsStorage(context: Context) : com.sujan.eventanalytics.AnalyticsStorage {
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     private val gson = Gson()
 
-    override fun saveSession(session: AnalyticsSession) {
+    override fun saveSession(session: com.sujan.eventanalytics.models.AnalyticsSession) {
         val sessions = getAllSessions().toMutableList()
         val existingIndex = sessions.indexOfFirst { it.id == session.id }
         
@@ -24,13 +24,13 @@ class SharedPrefsAnalyticsStorage(context: Context) : AnalyticsStorage {
         prefs.edit().putString(KEY_SESSIONS, gson.toJson(sessions)).apply()
     }
 
-    override fun getSession(sessionId: String): AnalyticsSession? {
+    override fun getSession(sessionId: String): com.sujan.eventanalytics.models.AnalyticsSession? {
         return getAllSessions().find { it.id == sessionId }
     }
 
-    override fun getAllSessions(): List<AnalyticsSession> {
+    override fun getAllSessions(): List<com.sujan.eventanalytics.models.AnalyticsSession> {
         val sessionsJson = prefs.getString(KEY_SESSIONS, "[]")
-        val type = object : TypeToken<List<AnalyticsSession>>() {}.type
+        val type = object : TypeToken<List<com.sujan.eventanalytics.models.AnalyticsSession>>() {}.type
         return gson.fromJson(sessionsJson, type) ?: emptyList()
     }
 

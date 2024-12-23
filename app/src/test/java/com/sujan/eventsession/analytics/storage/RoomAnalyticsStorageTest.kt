@@ -2,8 +2,9 @@ package com.sujan.eventsession.analytics.storage
 
 import android.content.Context
 import com.google.gson.Gson
-import com.sujan.eventsession.analytics.models.AnalyticsSession
+import com.sujan.eventanalytics.models.AnalyticsSession
 import io.mockk.*
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -26,7 +27,7 @@ class RoomAnalyticsStorageTest {
 
     @Test
     fun `saveSession should delegate to repository`() = runTest {
-        val session = AnalyticsSession(name = "test")
+        val session =AnalyticsSession(name = "test")
         coEvery { mockRepository.saveSession(any()) } just Runs
 
         storage.saveSession(session)

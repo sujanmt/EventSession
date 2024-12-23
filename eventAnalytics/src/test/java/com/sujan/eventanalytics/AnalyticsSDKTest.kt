@@ -1,4 +1,4 @@
-package com.sujan.eventsession.analytics
+package com.sujan.eventanalytics
 
 import io.mockk.*
 import org.junit.Before
@@ -6,7 +6,7 @@ import org.junit.Test
 import kotlin.test.assertFailsWith
 
 class AnalyticsSDKTest {
-    private val mockStorage: AnalyticsStorage = mockk(relaxed = true)
+    private val mockStorage: com.sujan.eventanalytics.AnalyticsStorage = mockk(relaxed = true)
 
     @Before
     fun setup() {

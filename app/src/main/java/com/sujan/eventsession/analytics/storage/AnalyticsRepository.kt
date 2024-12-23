@@ -1,8 +1,8 @@
 package com.sujan.eventsession.analytics.storage
 
 import com.google.gson.Gson
-import com.sujan.eventsession.analytics.models.AnalyticsEvent
-import com.sujan.eventsession.analytics.models.AnalyticsSession
+import com.sujan.eventanalytics.models.AnalyticsEvent
+import com.sujan.eventanalytics.models.AnalyticsSession
 import com.sujan.eventsession.analytics.storage.entities.EventEntity
 import com.sujan.eventsession.analytics.storage.entities.SessionEntity
 import com.sujan.eventsession.analytics.storage.entities.SessionWithEvents
@@ -20,7 +20,7 @@ class AnalyticsRepository(
     suspend fun saveSession(session: AnalyticsSession) = withContext(Dispatchers.IO) {
         val sessionEntity = session.toSessionEntity()
         val eventEntities = session.events.map { it.toEventEntity(session.id) }
-        
+
         dao.updateSession(SessionWithEvents(sessionEntity, eventEntities))
     }
 
@@ -52,13 +52,14 @@ class AnalyticsRepository(
         timestamp = timestamp
     )
 
-    private fun SessionWithEvents.toAnalyticsSession() = AnalyticsSession(
-        id = session.id,
-        name = session.name,
-        startTime = session.startTime,
-        endTime = session.endTime,
-        events = events.map { it.toAnalyticsEvent() }.toMutableList()
-    )
+    private fun SessionWithEvents.toAnalyticsSession() =
+        AnalyticsSession(
+            id = session.id,
+            name = session.name,
+            startTime = session.startTime,
+            endTime = session.endTime,
+            events = events.map { it.toAnalyticsEvent() }.toMutableList()
+        )
 
     private fun EventEntity.toAnalyticsEvent() = AnalyticsEvent(
         id = id,

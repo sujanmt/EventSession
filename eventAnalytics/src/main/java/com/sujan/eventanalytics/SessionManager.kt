@@ -1,4 +1,4 @@
-package com.sujan.eventsession.analytics
+package com.sujan.eventanalytics
 
 interface SessionManager {
     fun startSession(sessionName: String)
