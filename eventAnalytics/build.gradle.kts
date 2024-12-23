@@ -1,6 +1,9 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.vanniktech.maven.publish") version "0.29.0"
 }
 
 android {
@@ -44,4 +47,40 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.9")
     testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.10")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.9.10")
+}
+
+mavenPublishing {
+    // publishing to https://s01.oss.sonatype.org
+    publishToMavenCentral(SonatypeHost.S01)
+    signAllPublications()
+}
+
+mavenPublishing {
+    coordinates("com.sujan.eventAnalytics", "eventAnalytics", "1.0.0")
+
+    pom {
+        name.set("Event Analytics")
+        description.set("An open source Android library that makes start the recording user session and track of any event.")
+        inceptionYear.set("2024")
+        url.set("https://github.com/sujanmt/EventSession/")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+        developers {
+            developer {
+                id.set("EventSession")
+                name.set("Event Session")
+                url.set("https://github.com/sujanmt/")
+            }
+        }
+        scm {
+            url.set("https://github.com/sujanmt/EventSession/")
+            connection.set("scm:git:git://github.com:sujanmt/EventSession.git")
+            developerConnection.set("scm:git:ssh://git@github.com:sujanmt/EventSession.git")
+        }
+    }
 }
