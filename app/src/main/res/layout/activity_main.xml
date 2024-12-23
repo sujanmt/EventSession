@@ -5,60 +5,75 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:layout_marginBottom="16dp">
+        android:orientation="horizontal">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
+
             android:id="@+id/btnStartSession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/btn_background"
+            android:paddingHorizontal="10dp"
             android:text="Start Session"
-            android:layout_marginEnd="8dp"/>
+            android:textColor="@android:color/white" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnTrackEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/btnStartSession"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/btn_background"
+            android:paddingHorizontal="10dp"
             android:text="Track Event"
-            android:layout_marginEnd="8dp"/>
+            android:textColor="@android:color/white" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnEndSession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="End Session"/>
-    </LinearLayout>
+            android:layout_toRightOf="@+id/btnStartSession"
+            android:background="@drawable/btn_background"
+            android:paddingHorizontal="10dp"
+            android:text="End Session"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
-        android:layout_marginBottom="8dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Sessions"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRefresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Refresh"/>
+            android:background="@drawable/btn_background"
+            android:textColor="@android:color/white"
+            android:paddingHorizontal="10dp"
+            android:text="Refresh" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSessions"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
 </LinearLayout>
