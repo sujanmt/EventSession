@@ -49,5 +49,4 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.9")
     testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.10")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.9.10")
-    implementation("com.github.sujanmt:eventAnalysis:eventAnalysis")
 }
