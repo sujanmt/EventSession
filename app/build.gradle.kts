@@ -2,19 +2,20 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("maven-publish")
 }
 
 android {
     namespace = "com.sujan.eventsession"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.sujan.eventsession"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0.0"
-        group = "com.sujan.eventsession"
+        group = "com.github.sujanmt"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -36,8 +37,38 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.sujanmt"
+            artifactId = "event-analytics"
+            version = "1.0.0"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/sujanmt/EventAnalytics")
+            credentials {
+                username = System.getenv("sujanmt")
+                password = System.getenv("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")
+            }
+        }
+    }
+}
 dependencies {
     // AndroidX Core
     implementation("androidx.core:core-ktx:1.15.0")
@@ -59,11 +90,15 @@ dependencies {
     // Gson
     implementation("com.google.code.gson:gson:2.10.1")
 
+//    implementation("com.android.tools.lint:lint-gradle:31.7.3"){
+//        exclude(group = "org.jetbrains.kotlinx", module = "duplicate-library")
+//
+//    }
+//    implementation("com.github.sujanmt:EventSession:-SNAPSHOT")
+//    implementation("com.github.jitpack:gradle-simple:master-SNAPSHOT")
     // Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.13.9")
-    testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.10")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.9.10")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
     testImplementation("androidx.room:room-testing:$roomVersion")
     testImplementation("app.cash.turbine:turbine:1.0.0")

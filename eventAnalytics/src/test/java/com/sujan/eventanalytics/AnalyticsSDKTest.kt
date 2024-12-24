@@ -6,7 +6,7 @@ import org.junit.Test
 import kotlin.test.assertFailsWith
 
 class AnalyticsSDKTest {
-    private val mockStorage: com.sujan.eventanalytics.AnalyticsStorage = mockk(relaxed = true)
+    private val mockStorage: AnalyticsStorage = mockk(relaxed = true)
 
     @Before
     fun setup() {
@@ -22,7 +22,7 @@ class AnalyticsSDKTest {
     @Test
     fun `initialize should throw when called twice`() {
         AnalyticsSDK.initialize(mockStorage)
-        
+
         assertFailsWith<IllegalStateException> {
             AnalyticsSDK.initialize(mockStorage)
         }
@@ -47,13 +47,13 @@ class AnalyticsSDKTest {
     fun `trackEvent should add event to current session`() {
         AnalyticsSDK.initialize(mockStorage)
         AnalyticsSDK.startSession("test_session")
-        
+
         val properties = mapOf("key" to "value")
         AnalyticsSDK.trackEvent("test_event", properties)
 
-        verify { mockStorage.saveSession(match { 
-            it.events.any { event -> 
-                event.name == "test_event" && event.properties == properties 
+        verify { mockStorage.saveSession(match {
+            it.events.any { event ->
+                event.name == "test_event" && event.properties == properties
             }
         })}
     }

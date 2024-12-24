@@ -1,5 +1,7 @@
 package com.sujan.eventanalytics
 
+import android.util.Log
+
 object AnalyticsSDK {
     private var isInitialized = false
     private lateinit var sessionManager: SessionManager
@@ -7,7 +9,8 @@ object AnalyticsSDK {
 
     fun initialize(storage: AnalyticsStorage) {
         if (isInitialized) {
-            throw IllegalStateException("AnalyticsSDK is already initialized")
+//            throw IllegalStateException("AnalyticsSDK is already initialized")
+            Log.d("Exception","AnalyticsSDK is already initialized")
         }
         this.storage = storage
         this.sessionManager = SessionManagerImpl(storage)
@@ -31,7 +34,7 @@ object AnalyticsSDK {
 
     private fun checkInitialization() {
         if (!isInitialized) {
-            throw IllegalStateException("AnalyticsSDK is not initialized")
+            Log.d("Exception","AnalyticsSDK is already initialized")
         }
     }
 } 

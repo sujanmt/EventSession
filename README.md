@@ -1,19 +1,18 @@
 # Event Analytics Session
-Event Analytics Session is an extension Android library that makes start the recording user session 
-and track of any event.
+An Android SDK for tracking analytics events and sessions.
 
 ## Quick Setup
 
 Edit your build.gradle file and add below dependency.
 
-```groovy
+```kotlin
 repositories {
   google()
   mavenCentral()
 }
 
 dependencies {
-implementation 'com.sujan.eventanalytics:eventanalytics:xxx'
+    implementation ("com.sujan.eventanalytics:eventanalytics:xxx")
 }
 ```
 

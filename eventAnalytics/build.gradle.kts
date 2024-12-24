@@ -1,8 +1,6 @@
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("maven-publish")
 }
 
 android {
@@ -36,17 +34,18 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
-    implementation("com.github.sujanmt:EventSession:-SNAPSHOT")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.13.9")
     testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.10")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.9.10")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.9.10")
 }
