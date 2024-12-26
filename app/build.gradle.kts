@@ -90,13 +90,6 @@ dependencies {
     // Gson
     implementation("com.google.code.gson:gson:2.10.1")
 
-//    implementation("com.android.tools.lint:lint-gradle:31.7.3"){
-//        exclude(group = "org.jetbrains.kotlinx", module = "duplicate-library")
-//
-//    }
-//    implementation("com.github.sujanmt:EventSession:-SNAPSHOT")
-//    implementation("com.github.jitpack:gradle-simple:master-SNAPSHOT")
-    // Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.13.9")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
